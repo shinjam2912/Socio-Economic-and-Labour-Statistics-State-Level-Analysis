@@ -1,0 +1,27 @@
+# R specific
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.Rapp.history
+*.Rproj
+*.Rout
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Optional: ignore outputs (tables, plots you generate)
+outputs/
+*.png
+*.pdf
+
+# Optional: ignore data if too large (commit only small sample)
+# data/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+.ipynb_checkpoints/
+data/raw/  (if you have a raw data subfolder)
