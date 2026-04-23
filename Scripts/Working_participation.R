@@ -3,6 +3,11 @@
 # Using your imported dataframe df (OGD Census Data)
 # ============================================================================
 
+getwd()
+setwd("C:/Users/RBI1/Documents/R_Basics")
+df <- read.csv("population_perSTATE.csv", check.names = FALSE)
+View(df)
+
 library(tidyverse)
 library(ggplot2)
 library(dplyr)
@@ -121,7 +126,7 @@ df_wfpr <- df %>%
   # Handle NA and Inf values (in case of division by zero)
   mutate(across(where(is.numeric), ~ifelse(is.infinite(.), NA, .)))
 
-# Display calculated metrics
+'# Display calculated metrics
 cat("\n========== WFPR CALCULATIONS COMPLETE ==========\n")
 cat("New columns created:\n")
 cat("- Principal_Status_Workers\n")
@@ -132,7 +137,7 @@ cat("- UPSS_Proxy_Rate (% of population)\n")
 cat("- Marginal_0_3_Rate (% of population)\n")
 cat("- Main_Worker_Percentage (% of total workers)\n")
 cat("- Labor_Distress_Index\n")
-cat("- Employment_Quality_Index\n\n")
+cat("- Employment_Quality_Index\n\n")'
 
 # Show sample calculations
 cat("Sample calculations (first few rows):\n")
@@ -209,7 +214,7 @@ plot1 <- ggplot(state_wfpr_1, aes(x = Rate, y = Name, fill = Employment_Type)) +
   )
 
 print(plot1)
-ggsave("01_wfpr_principal_vs_upss.png", plot1, width = 13, height = 10, dpi = 300)
+#ggsave("01_wfpr_principal_vs_upss.png", plot1, width = 13, height = 10, dpi = 300)
 
 # ============================================================================
 # VISUALIZATION 2: Labor Distress Index (Main vs Marginal 0-3)
@@ -255,7 +260,7 @@ plot2 <- ggplot(state_distress, aes(x = Labor_Distress_Index, y = Name)) +
   )
 
 print(plot2)
-ggsave("02_labor_distress_index.png", plot2, width = 12, height = 10, dpi = 300)
+#ggsave("02_labor_distress_index.png", plot2, width = 12, height = 10, dpi = 300)
 
 # ============================================================================
 # VISUALIZATION 3: Employment Quality Index
@@ -305,7 +310,7 @@ plot3 <- ggplot(state_quality, aes(x = Employment_Quality_Index, y = Name)) +
   )
 
 print(plot3)
-ggsave("03_employment_quality_index.png", plot3, width = 12, height = 10, dpi = 300)
+#ggsave("03_employment_quality_index.png", plot3, width = 12, height = 10, dpi = 300)
 
 # ============================================================================
 # VISUALIZATION 4: Employment Composition (Stacked) by State & TRU
@@ -367,7 +372,7 @@ plot4 <- ggplot(composition_data, aes(x = Percentage, y = Name, fill = Worker_Ty
   )
 
 print(plot4)
-ggsave("04_employment_composition_stacked.png", plot4, width = 13, height = 10, dpi = 300)
+#ggsave("04_employment_composition_stacked.png", plot4, width = 13, height = 10, dpi = 300)
 
 # ============================================================================
 # VISUALIZATION 5: Scatter Plot - Distress vs Quality
@@ -428,7 +433,7 @@ plot5 <- ggplot(scatter_data, aes(x = Labor_Distress, y = Employment_Quality)) +
   )
 
 print(plot5)
-ggsave("05_distress_vs_quality_scatter.png", plot5, width = 12, height = 9, dpi = 300)
+#ggsave("05_distress_vs_quality_scatter.png", plot5, width = 12, height = 9, dpi = 300)
 
 # ============================================================================
 # SUMMARY STATISTICS & ANALYSIS
@@ -534,15 +539,7 @@ summary_table <- df_wfpr %>%
     .groups = 'drop'
   )
 
-# Export to CSV
-write.csv(summary_table, "wfpr_summary_analysis.csv", row.names = FALSE)
-cat("\n\n✓ Summary table exported to: wfpr_summary_analysis.csv\n")
 
-# Export full calculated dataframe
-write.csv(df_wfpr, "wfpr_full_calculations.csv", row.names = FALSE)
-cat("✓ Full calculations exported to: wfpr_full_calculations.csv\n")
-
-cat("\n========== ANALYSIS COMPLETE ==========\n")
 
 # ============================================================================
 # KEY INSIGHTS & INTERPRETATION GUIDE
