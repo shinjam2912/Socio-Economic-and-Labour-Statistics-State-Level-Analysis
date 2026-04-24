@@ -1,4 +1,4 @@
-#chinmay#
+
 # Socio-Demographic & Labor Statistics Analysis
 ## OGD Census Data Visualization & Analysis
 
